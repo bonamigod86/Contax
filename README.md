@@ -6,6 +6,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4?logo=tailwindcss)
 ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-latest-000?logo=shadcnui)
+![Tauri](https://img.shields.io/badge/Tauri-2-FFC131?logo=tauri)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
@@ -61,31 +62,32 @@
 | [Framer Motion](https://motion.dev) | latest |
 | [Recharts](https://recharts.org) | 2 |
 | [Lucide Icons](https://lucide.dev) | latest |
+| [Tauri](https://tauri.app) | 2 |
 
 ---
 
 ## Começando
 
+### Web
+
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/contax.git
-cd contax
-
-# Instale as dependências
 npm install
-
-# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
 Acesse [http://localhost:5173](http://localhost:5173) no navegador.
 
-### Build de produção
+### Desktop (Tauri)
+
+> Requer **Rust** instalado ([rustup.rs](https://rustup.rs))
 
 ```bash
-npm run build
-npm start
+npm install
+npx tauri dev      # Rodar em modo desenvolvimento
+npx tauri build     # Gerar instalador .exe/.msi
 ```
+
+O instalador será gerado em `src-tauri/target/release/bundle/nsis/`.
 
 ---
 
@@ -94,21 +96,15 @@ npm start
 ```
 src/
 ├── app/                   # Páginas Next.js App Router
-│   ├── globals.css        # Estilos globais e tema
-│   ├── layout.tsx         # Layout raiz
-│   └── page.tsx           # Página principal
-├── components/
-│   ├── calendar/          # Visualização em calendário
-│   ├── dashboard/         # Cards, gráficos, próximos vencimentos
-│   ├── expenses/          # CRUD de contas, ações, categorias
-│   ├── filters/           # Barra de filtros
-│   └── ui/                # Componentes shadcn/ui
-├── lib/
-│   └── utils.ts           # Utilitários (formatação, cores)
-├── store/
-│   └── useStore.ts        # Estado global (Zustand + persist)
-└── types/
-    └── index.ts           # Tipos TypeScript
+├── components/            # Componentes React
+├── lib/                   # Utilitários
+├── store/                 # Estado global (Zustand)
+└── types/                 # Tipos TypeScript
+src-tauri/                 # Bundler desktop (Tauri)
+├── src/                   # Código Rust
+├── icons/                 # Ícones do aplicativo
+├── tauri.conf.json        # Configuração Tauri
+└── Cargo.toml             # Dependências Rust
 ```
 
 ---
