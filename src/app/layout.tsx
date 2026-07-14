@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Contax",
   description: "Controle de contas mensais simples e elegante",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/icon.svg",
+  },
 }
 
 export default function RootLayout({
